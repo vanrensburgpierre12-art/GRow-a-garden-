@@ -1,0 +1,51 @@
+Grow a Garden 2.0 - Quick Setup Instructions
+============================================
+
+STEP 1: Create New Roblox Place
+- Open Roblox Studio
+- Create a new place
+- Save it as "Grow a Garden 2.0"
+
+STEP 2: Set Up ServerScriptService
+- In ServerScriptService, create these scripts:
+  * GameConfig.lua
+  * DataStoreManager.lua
+  * GameManager.lua
+  * PlantGrowthManager.lua
+  * ShopManager.lua
+  * QuestManager.lua
+  * DailyRewardManager.lua
+  * MultiplayerManager.lua
+
+STEP 3: Set Up StarterPlayer
+- In StarterPlayer > StarterPlayerScripts, create these scripts:
+  * ClientManager.lua
+  * ShopUI.lua
+  * InventoryUI.lua
+  * QuestUI.lua
+  * DailyRewardUI.lua
+  * FriendsUI.lua
+  * UIConnector.lua
+
+STEP 4: Configure DataStores
+- Go to Game Settings > Security
+- Enable "Allow HTTP Requests"
+- Enable "Allow Studio Access to API Services"
+
+STEP 5: Test the Game
+- Click "Play" in Studio
+- Test planting, harvesting, and shopping
+- Check that data saves when you leave and rejoin
+
+STEP 6: Publish
+- Click "Publish to Roblox"
+- Set up proper permissions
+- Test with multiple players
+
+TROUBLESHOOTING:
+- If UI doesn't show: Check all scripts are in correct locations
+- If data doesn't save: Verify DataStore permissions
+- If plants don't grow: Check PlantGrowthManager is running
+- If shop doesn't work: Verify all managers are loaded
+
+For detailed instructions, see README.md
