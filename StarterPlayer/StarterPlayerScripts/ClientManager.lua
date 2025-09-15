@@ -330,6 +330,28 @@ remotes.GetInventory.OnClientEvent:Connect(function(inventory)
     updateHUD()
 end)
 
+-- Handle shop data
+remotes.GetShopData.OnClientEvent:Connect(function(shopData)
+    gameState.shopData = shopData
+end)
+
+-- Handle quest data
+remotes.GetQuestData.OnClientEvent:Connect(function(questData)
+    gameState.questData = questData
+end)
+
+-- Handle daily reward data
+remotes.ClaimDailyReward.OnClientEvent:Connect(function(success, message, rewardData)
+    if success and rewardData then
+        gameState.dailyRewardData = rewardData
+    end
+end)
+
+-- Handle friend data
+remotes.GetFriendList.OnClientEvent:Connect(function(friendData)
+    gameState.friendData = friendData
+end)
+
 -- Initialize
 createGardenGrid()
 

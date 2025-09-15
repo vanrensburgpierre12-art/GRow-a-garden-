@@ -126,6 +126,11 @@ remotes.PlantSeed.OnServerEvent:Connect(function(player, x, y, seedType)
     
     savePlayerData(player)
     remotes.GetGardenData:FireClient(player, data.garden)
+    
+    -- Update quest progress
+    if _G.QuestManager then
+        _G.QuestManager.updateQuestProgress(player, "plant", seedType, 1)
+    end
 end)
 
 remotes.HarvestPlant.OnServerEvent:Connect(function(player, x, y)
@@ -160,6 +165,11 @@ remotes.HarvestPlant.OnServerEvent:Connect(function(player, x, y)
     
     savePlayerData(player)
     remotes.GetGardenData:FireClient(player, data.garden)
+    
+    -- Update quest progress
+    if _G.QuestManager then
+        _G.QuestManager.updateQuestProgress(player, "harvest", plot.plantType, 1)
+    end
 end)
 
 remotes.WaterPlant.OnServerEvent:Connect(function(player, x, y)
@@ -177,6 +187,11 @@ remotes.WaterPlant.OnServerEvent:Connect(function(player, x, y)
     
     savePlayerData(player)
     remotes.GetGardenData:FireClient(player, data.garden)
+    
+    -- Update quest progress
+    if _G.QuestManager then
+        _G.QuestManager.updateQuestProgress(player, "water", "any", 1)
+    end
 end)
 
 -- Export functions for other modules

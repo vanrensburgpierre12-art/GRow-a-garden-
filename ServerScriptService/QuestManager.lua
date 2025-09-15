@@ -336,38 +336,7 @@ remotes.CompleteQuest.OnServerEvent:Connect(function(player, questId)
 end)
 
 -- Hook into game actions to update progress
-local originalPlantSeed = remotes.PlantSeed.OnServerEvent
-remotes.PlantSeed.OnServerEvent:Connect(function(player, x, y, seedType)
-    -- Call original handler
-    originalPlantSeed:Fire(player, x, y, seedType)
-    
-    -- Update quest progress
-    updateQuestProgress(player, "plant", seedType, 1)
-end)
-
-local originalHarvestPlant = remotes.HarvestPlant.OnServerEvent
-remotes.HarvestPlant.OnServerEvent:Connect(function(player, x, y)
-    -- Call original handler
-    originalHarvestPlant:Fire(player, x, y)
-    
-    -- Get plant type for progress tracking
-    local data = GameManager.getPlayerData(player)
-    local plotKey = x .. "," .. y
-    local plot = data.garden.plots[plotKey]
-    
-    if plot and plot.plantType then
-        updateQuestProgress(player, "harvest", plot.plantType, 1)
-    end
-end)
-
-local originalWaterPlant = remotes.WaterPlant.OnServerEvent
-remotes.WaterPlant.OnServerEvent:Connect(function(player, x, y)
-    -- Call original handler
-    originalWaterPlant:Fire(player, x, y)
-    
-    -- Update quest progress
-    updateQuestProgress(player, "water", "any", 1)
-end)
+-- Note: These will be called by GameManager after the main actions complete
 
 -- Level up tracking
 local function checkLevelUp(player)
@@ -406,5 +375,12 @@ Players.PlayerAdded:Connect(function(player)
         end)
     end)
 end)
+
+-- Export functions for other modules
+_G.QuestManager = {
+    updateQuestProgress = updateQuestProgress,
+    completeQuest = completeQuest,
+    completeAchievement = completeAchievement
+}
 
 print("QuestManager loaded successfully!")

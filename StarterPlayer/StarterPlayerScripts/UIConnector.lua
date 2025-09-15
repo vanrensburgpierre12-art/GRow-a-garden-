@@ -8,12 +8,13 @@ local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
 -- Wait for UI modules to load
-repeat wait() until _G.ShopUI and _G.InventoryUI and _G.QuestUI and _G.DailyRewardUI
+repeat wait() until _G.ShopUI and _G.InventoryUI and _G.QuestUI and _G.DailyRewardUI and _G.FriendsUI
 
 local ShopUI = _G.ShopUI
 local InventoryUI = _G.InventoryUI
 local QuestUI = _G.QuestUI
 local DailyRewardUI = _G.DailyRewardUI
+local FriendsUI = _G.FriendsUI
 
 -- Wait for main UI to load
 local screenGui = playerGui:WaitForChild("GardenGameUI")
@@ -46,8 +47,7 @@ dailyButton.MouseButton1Click:Connect(function()
 end)
 
 friendsButton.MouseButton1Click:Connect(function()
-    -- TODO: Implement friends UI
-    print("Friends feature coming soon!")
+    FriendsUI.createFriendsUI()
 end)
 
 -- Auto-show daily reward on first login
